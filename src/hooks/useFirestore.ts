@@ -76,7 +76,7 @@ export const useFirestore = (user: User | null) => {
   );
 
   const saveDailyLog = useCallback(
-    async (completionScore: number, userRef?: User | null) => {
+    async (completionScore: number) => {
       if (!user) return;
 
       const today = new Date().toISOString().split('T')[0];
