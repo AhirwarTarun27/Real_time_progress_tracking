@@ -152,7 +152,7 @@ Built to leverage the **Zeigarnik Effect** – the psychological principle that 
 
 ## 🔗 Live Demo
 
-[View Live App](#) _(update with your deployment URL)_
+[View Live App](https://productivity-app-ce42b.web.app/)
 
 ---
 
@@ -163,4 +163,5 @@ This project is open source and available under the MIT License.
 ---
 
 **Made with ❤️ for personal productivity**
+
 # Real_time_progress_tracking
