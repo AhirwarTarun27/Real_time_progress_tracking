@@ -1,7 +1,3 @@
-// ============================================
-// App.tsx - Main Application Component
-// ============================================
-
 import React, { useState, useEffect, useMemo } from 'react';
 import './styles/main.scss';
 import {
@@ -16,10 +12,6 @@ import ProgressCircle from './components/ProgressCircle';
 import TaskCard from './components/TaskCard';
 import Insights from './components/Insights';
 import type { Task } from './types';
-
-// ============================================
-// TypeScript Interfaces
-// ============================================
 
 const App: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
