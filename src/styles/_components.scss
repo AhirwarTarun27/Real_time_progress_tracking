@@ -1,0 +1,377 @@
+// Dashboard
+.dashboard {
+  margin-bottom: $spacing-2xl;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: auto 1fr;
+    gap: $spacing-2xl;
+  }
+
+  &__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__insights-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.consistency-meter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-md;
+
+  &__label {
+    font-size: 1.2rem;
+    color: $color-text-secondary;
+    font-weight: 500;
+  }
+}
+
+.progress-circle {
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+
+  &__stroke {
+    transition: stroke-dashoffset $transition-smooth, stroke $transition-smooth;
+  }
+
+  &__text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    transition: fill $transition-smooth;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.insights {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-md;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.insight-card {
+  background: $color-bg-secondary;
+  padding: $spacing-lg;
+  border-radius: $border-radius-lg;
+  border: 1px solid $color-bg-tertiary;
+  display: flex;
+  gap: $spacing-sm;
+  align-items: flex-start;
+  transition: transform $transition-base, box-shadow $transition-base,
+    border-color $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border-color: rgba(102, 126, 234, 0.3);
+  }
+
+  &--highlight {
+    grid-column: 1 / -1;
+    background: linear-gradient(
+      135deg,
+      rgba(102, 126, 234, 0.1) 0%,
+      rgba(118, 75, 162, 0.1) 100%
+    );
+    border-color: rgba(102, 126, 234, 0.3);
+
+    .insight-card__value {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+
+  &__icon {
+    font-size: 1.75rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__label {
+    font-size: 0.85rem;
+    color: $color-text-secondary;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+  }
+
+  &__value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $color-text-primary;
+    word-wrap: break-word;
+  }
+}
+
+// Tasks
+.tasks {
+  margin-bottom: $spacing-xl;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  &__add-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    background: $color-accent-primary;
+    color: white;
+    border: none;
+    border-radius: $border-radius-full;
+    cursor: pointer;
+    transition: all $transition-base;
+    @include flex-center;
+
+    &:hover {
+      background: $color-accent-secondary;
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+
+    @media (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+  }
+
+  &__empty,
+  &__loading {
+    text-align: center;
+    padding: $spacing-2xl $spacing-md;
+    color: $color-text-tertiary;
+  }
+}
+
+.add-task-form {
+  background: $color-bg-secondary;
+  padding: $spacing-lg;
+  border-radius: $border-radius-lg;
+  margin-bottom: $spacing-lg;
+  border: 1px solid $color-bg-tertiary;
+  animation: fadeIn 0.3s ease-out;
+
+  &__input {
+    width: 100%;
+    padding: $spacing-sm;
+    font-size: 1rem;
+    background: $color-bg-primary;
+    color: $color-text-primary;
+    border: 1px solid $color-bg-tertiary;
+    border-radius: $border-radius-md;
+    margin-bottom: $spacing-md;
+    transition: border-color $transition-base;
+
+    &:focus {
+      outline: none;
+      border-color: $color-accent-primary;
+    }
+
+    &::placeholder {
+      color: $color-text-tertiary;
+    }
+
+    &--small {
+      flex: 1;
+    }
+  }
+
+  &__row {
+    display: flex;
+    gap: $spacing-md;
+
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+    }
+  }
+
+  &__submit {
+    width: 100%;
+    padding: $spacing-sm;
+    font-size: 1rem;
+    font-weight: 600;
+    background: $color-accent-primary;
+    color: white;
+    border: none;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    transition: background $transition-base, transform $transition-base;
+
+    &:hover {
+      background: $color-accent-secondary;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.task-card {
+  background: $color-bg-secondary;
+  padding: $spacing-lg;
+  border-radius: $border-radius-lg;
+  border: 1px solid $color-bg-tertiary;
+  @include card-hover;
+  animation: fadeIn 0.3s ease-out;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $spacing-md;
+  }
+
+  &__name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    flex: 1;
+    word-break: break-word;
+  }
+
+  &__delete-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 1.5rem;
+    background: transparent;
+    color: $color-text-tertiary;
+    border: none;
+    cursor: pointer;
+    transition: color $transition-base;
+    line-height: 1;
+    flex-shrink: 0;
+
+    &:hover {
+      color: $color-danger;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  &__progress-bar {
+    width: 100%;
+    height: 8px;
+    background: $color-bg-primary;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: $spacing-md;
+  }
+
+  &__progress-fill {
+    height: 100%;
+    transition: width $transition-smooth, background-color $transition-smooth;
+    border-radius: 4px;
+  }
+
+  &__input-group {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__input {
+    width: 80px;
+    padding: $spacing-xs;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: $color-bg-primary;
+    color: $color-text-primary;
+    border: 1px solid $color-bg-tertiary;
+    border-radius: $border-radius-sm;
+    text-align: center;
+    transition: border-color $transition-base;
+
+    &:focus {
+      outline: none;
+      border-color: $color-accent-primary;
+    }
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
+  }
+
+  &__divider {
+    font-size: 1.2rem;
+    color: $color-text-tertiary;
+  }
+
+  &__target {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $color-text-secondary;
+  }
+
+  &__unit {
+    font-size: 0.9rem;
+    color: $color-text-tertiary;
+  }
+
+  &__percentage {
+    font-size: 0.9rem;
+    color: $color-text-secondary;
+    text-align: right;
+  }
+}
